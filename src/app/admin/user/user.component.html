@@ -1,0 +1,94 @@
+<div class="user">
+    <div class="user-header">
+        <ion-button slot="end" data-bs-toggle="modal" data-bs-target="#editModal" color="success">Add a new User</ion-button>
+        <ion-button  color="primary" (click)="showDiv = !showDiv">List Of Active User</ion-button>
+    </div>
+    <div class="abc" *ngIf="showDiv">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef><b>Name</b></th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        
+        <!-- Name Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> <b>Email</b> </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        
+        <!-- Weight Column -->
+        <ng-container matColumnDef="password">
+            <th mat-header-cell *matHeaderCellDef> <b>Password</b> </th>
+            <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> <b>Type</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+        <ng-container matColumnDef="edit/delete">
+            <th mat-header-cell *matHeaderCellDef><b>Edit / Delete</b></th>
+            <td mat-cell *matCellDef="let element; let i = index ">
+                <ion-button data-bs-toggle="modal" data-bs-target="#editModal" color="success" (click)="editUser(element)"><ion-icon name="create-sharp"></ion-icon></ion-button>
+                <ion-button color="danger" *ngIf="element.type !== 'admin'" (click)="deleteUser(element.id)"><ion-icon name="trash-outline" ></ion-icon></ion-button>
+            </td>
+        </ng-container>
+        
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    </div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-9" id="exampleModalLabel" *ngIf="!editMode">Add new user</h1>
+        <h1 class="modal-title fs-9" id="exampleModalLabel" *ngIf="editMode">Edit user</h1>
+        <button #button name="button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" autocomplete="off">
+            <div class="form-outline mb-4">
+                <!-- <label class="form-label" for="typeEmailX-2" >Email</label> -->
+                <input type="email" placeholder="E-mail" id="typeEmailX-2" class="form-control form-control-lg" ngModel
+                    name="email" required email #email="ngModel" 
+                    pattern="^\w+([-+.']\w+)*@[A-Za-z\d]+\.com|.co.in$" [(ngModel)]="editable.email">
+                <span class="help-back" *ngIf="!email.valid && email.touched"> Please enter a valid information </span>
+            </div>
+
+            <div class="form-outline mb-4">
+                <!-- <label class="form-label" for="typePasswordX-2">Password</label> -->
+                <input type="password" placeholder="Password" id="typePasswordX-2" class="form-control form-control-lg"
+                    ngModel name="password" required #password="ngModel" minlength="6" [(ngModel)]="editable.password"/>
+                <span class="help-back" *ngIf="!password.valid && password.touched"> Please enter a valid password
+                </span>
+
+            </div>
+
+            <div class="form-outline mb-4">
+                <!-- <label class="form-label" for="typePasswordX-2">Password</label> -->
+                <select name="type" id="type" class="form-control" (change)="selectChangeHandler($event)" [(ngModel)]="editable.type">
+                    <option value="">Choose Any One.</option>
+                    <option value="sale" >Seller</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!f.valid"
+                style="background-color: #18509b; border: #18509b;">Submit</button>
+
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>

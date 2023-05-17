@@ -1,0 +1,34 @@
+<div class="container-fluid" style="height: 100%; overflow: auto;">
+    <div class="order">
+        <h2 class="text-center">List of all Order</h2>
+        <hr>
+        <table class="">
+            <tr>
+                <th>CustomerName</th>
+                <th>Total</th>
+                <th>Date</th>
+                <th>View/Delete</th>
+
+            </tr>
+            <tr *ngFor="let order of allOrder">
+               <td>{{order['name']}}</td>
+               <td>{{ order['total'] }}</td>
+               <td>{{order['date']}}</td>
+               <td>
+                <ion-button data-bs-toggle="modal" data-bs-target="#editModal" color="success" (click)="view()"><ion-icon name="eye-outline"></ion-icon></ion-button>
+                <ion-button color="danger" (click)="deleteOrder(order)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+               </td>
+               <!-- <td></td>
+               <td></td>  -->
+            </tr>
+        </table>
+    </div>
+</div>
+<ng-template #productDetailTemplate>
+    <div class="product-detail-overlay">
+      <!-- Content for the overlay -->
+      <h2>Product Details</h2>
+      <p>Product description goes here...</p>
+      <button (click)="closeOverlay()">Close</button>
+    </div>
+  </ng-template>

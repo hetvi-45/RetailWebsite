@@ -1,0 +1,74 @@
+<div class="parant">
+    <div class="child">
+        <form #customerForm="ngForm" (ngSubmit)="customerSubmit(customerForm)" *ngIf="!isEdit">
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label for="name" class="form-label" style="color: white;">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" ngModel placeholder="Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="birthdate" class="form-label" style="color: white;">BirthDate</label>
+                    <input type="date" name="birthDate" id="birthdate" class="form-control" ngModel placeholder="BirthDate" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="email" class="form-label" style="color: white;">Email</label>
+                    <input type="text" name="email" id="email" class="form-control" 
+                        pattern="^\w+([-+.']\w+)*@[A-Za-z\d]+\.com|.co.in$" ngModel placeholder="Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone" class="form-label" style="color: white;">Phone No.</label>
+                    <input type="text" name="phoneNo" id="phone" class="form-control" 
+                    pattern="^\d{10}$" ngModel placeholder="Phone Number" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="form-label" style="color: white;">Address</label>
+                <textarea type="text" name="address" id="address" class="form-control" ngModel placeholder="Address" required></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="button" type="submit" class="btn btn-primary" [disabled]="!customerForm.valid">Done</button>  
+            </div>
+            
+        </form>
+
+        <form #customerForm="ngForm" (ngSubmit)="customerSubmit(customerForm)" *ngIf="isEdit && customer ">
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label for="name" class="form-label" style="color: white;">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" [(ngModel)]="customer.name" ngModel placeholder="Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="birthdate" class="form-label" style="color: white;" >BirthDate</label>
+                    <input type="date" name="birthDate" id="birthdate" [(ngModel)]="customer.birthDate" class="form-control" ngModel placeholder="BirthDate" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="email" class="form-label" style="color: white;">Email</label>
+                    <input type="text" name="email" id="email" class="form-control" 
+                        pattern="^\w+([-+.']\w+)*@[A-Za-z\d]+\.com|.co.in$" [(ngModel)]="customer.email" ngModel placeholder="Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone" class="form-label" style="color: white;">Phone No.</label>
+                    <input type="text" name="phoneNo" id="phone" class="form-control" [(ngModel)]="customer.phoneNo"
+                    pattern="^\d{10}$" ngModel placeholder="Phone Number" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="form-label" style="color: white;">Address</label>
+                <textarea type="text" name="address" id="address" class="form-control" [(ngModel)]="customer.address" ngModel placeholder="Address" required></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="button" type="submit" class="btn btn-primary" [disabled]="!customerForm.valid">Done</button>  
+            </div>
+            <!-- <app-existing-customer *ngIf="false" (closeModalEvent)="closeModal()"></app-existing-customer> -->
+        </form>
+
+    </div>    
+</div>

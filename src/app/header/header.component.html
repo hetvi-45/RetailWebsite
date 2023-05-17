@@ -1,0 +1,59 @@
+<nav class="navigation navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">PMCElectronics</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+        aria-expanded="false" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+      <ul class="navi navbar-nav mr-auto" *ngIf="checkLogin() === 'true' && checkAdmin() === 'true'">
+        <li class="nav-item" >
+            <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item" >
+            <a class="nav-link" routerLink="/admin/products" routerLinkActive="active">Products</a>
+        </li>
+        <li class="nav-item" >
+            <a class="nav-link" routerLink="/admin/order" routerLinkActive="active">Order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/user" routerLinkActive="active">User</a>
+        </li>
+        <li class="nav-item"  style="align-items: flex-end;">
+            <a class="nav-link" style="cursor: pointer;" routerLink="/" (click)="logOut()">Log Out</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav mr-auto" *ngIf="checkLogin() === 'true' && checkAdmin() === 'false' && checkBasketScreen() == 'false'">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/customer/new" routerLinkActive="active">NewCustomer</a>
+        </li>
+        <li class="nav-item" >
+            <a class="nav-link" routerLink="/customer/existing" routerLinkActive="active">ExistingCustomer</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" style="cursor: pointer;"  (click)="logOut()">Log Out</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav mr-auto" *ngIf="checkLogin() === 'true' && checkAdmin() === 'false' && checkBasketScreen() == 'true'">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/customer/existing" routerLinkActive="active">Change Customer</a>
+        </li>
+        <li>
+          <div class=" d-flex justify-content-space-between" style="cursor: pointer;" (click)="goto()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" 
+            fill="white" class="bi bi-cart2" viewBox="0 0 16 16" >
+              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+            </svg><span style="color: white;">{{ checkCustomerId() }}</span>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;"   (click)="logOut()">Log Out</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </nav>

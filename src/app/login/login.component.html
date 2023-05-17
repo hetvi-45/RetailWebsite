@@ -1,0 +1,26 @@
+<div class="parentLogin">
+    <div class="childLogin">
+        <h2 class="text-center" style="font-size: 40px; margin-bottom: 20px;">Login</h2>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" autocomplete="off">
+            <div class="form-outline mb-4">
+                <!-- <label class="form-label" for="typeEmailX-2" >Email</label> -->
+                <input type="email" placeholder="E-mail" id="typeEmailX-2" class="form-control form-control-lg" ngModel
+                    name="email" required email #email="ngModel">
+                <span class="help-back" *ngIf="!email.valid && email.touched"> Please enter a valid information </span>
+            </div>
+
+            <div class="form-outline mb-4">
+                <!-- <label class="form-label" for="typePasswordX-2">Password</label> -->
+                <input type="password" placeholder="Password" id="typePasswordX-2" class="form-control form-control-lg"
+                    ngModel name="password" required #password="ngModel" minlength="6" />
+                <span class="help-back" *ngIf="!password.valid && password.touched"> Please enter a valid password
+                </span>
+
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="!f.valid"
+                style="background: linear-gradient(rgb(16, 13, 206), rgb(24, 34, 119))">Login</button>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+.container-fluid{
+    display: block;
+    width: auto;
+    height: auto;
+    overflow-y: scroll;
+}
+.data{
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    padding: 0.5% 5%;
+    /* padding-left: 100px; */
+}
+.row{
+    margin: 50px 0;
+}
+.span{
+    margin-left: 20px;
+}
+.basket{
+    padding: 0.5% 4%;
+    width: auto;
+    height: auto
+}
+h1{
+    font-weight: bolder;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.child{
+    margin-bottom: 50px;
+}

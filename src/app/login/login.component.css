@@ -1,0 +1,18 @@
+.parentLogin{
+    display: flex;
+    background: linear-gradient(#76cdd8, #e419da);
+    
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+}
+.childLogin{
+    width: 500px;
+    height: auto;
+    background-color: white;
+    padding: 5% 7%;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red ;
+  }

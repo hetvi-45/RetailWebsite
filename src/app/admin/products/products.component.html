@@ -1,0 +1,56 @@
+<!-- <ion-content> -->
+    <div class="product">
+        <div class="product-header" *ngIf="isEdit">
+            <ion-button slot="end" color="primary">Back</ion-button>
+            <ion-button slot="end" color="success" (click)="goToProductList()">Product-list</ion-button>
+        </div>
+        <div class="product-form">
+            <form [formGroup]="productForm" (ngSubmit)="productSubmit()" *ngIf="isEdit">
+
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="6">
+                            <ion-input type="text"  formControlName="name" placeholder="Product name" ></ion-input>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-input type="text" formControlName="price" placeholder="Price" ></ion-input>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-input type="number" value=" " formControlName="count" placeholder="CountInStock" ></ion-input>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-input type="text"  formControlName="image" placeholder="Paste Your Image URL"></ion-input>
+                        </ion-col>
+                        <ion-textarea formControlName="description" placeholder="Product description" ></ion-textarea>
+                        <ion-col>
+                          <ion-button style="margin-top: 50px;" type="submit" color="danger" expand="block" [disabled]="!productForm.valid">Submit</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </form>
+            <form *ngIf="currProduct != undefined" [formGroup]="productForm" (ngSubmit)="productSubmit()" >
+
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="6">
+                            <ion-input type="text" formControlName="name" placeholder="Product name" [(ngModel)]="currProduct.name"></ion-input>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-input type="text" formControlName="price" placeholder="Price" [(ngModel)]="currProduct.price"></ion-input>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-input type="number" value=" " formControlName="count" placeholder="CountInStock" [(ngModel)]="currProduct.count"></ion-input>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-input type="text"  formControlName="image" placeholder="Paste Your Image URL" [(ngModel)]="currProduct.imageUrl" ></ion-input>
+                        </ion-col>
+                        <ion-textarea class="" formControlName="description" placeholder="Product description" [(ngModel)]="currProduct.description"></ion-textarea>
+                        <ion-button  type="submit" color="danger" expand="block" [disabled]="!productForm.valid">Submit</ion-button>
+                        
+                    </ion-row>
+                </ion-grid>
+            </form>
+
+        </div>
+    </div>
+<!-- </ion-content> -->

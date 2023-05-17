@@ -1,0 +1,78 @@
+main {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+.container-fluid{
+    /* width: 208vh; */
+    /* width: auto; */
+    height: 100vh;
+    /* background: linear-gradient(to bottom, #1e5799, #2989d8); */
+    margin: 0px;
+}
+/* .parent{
+    display: flex;
+}
+.dash{
+    width: 80%;
+    flex-basis: calc(10% - 10px);
+   margin-left: 20px;
+   margin-right: 20px;
+   margin-top: 30px;
+    border: 1px solid black;
+    height: 200px;
+    border-radius: 20px;
+    align-items: center;
+} */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 30px;
+  }
+  
+  .card {
+    background: linear-gradient(to bottom, #579ca1, #46a346);
+    color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .card h2 {
+    margin-top: 0;
+  }
+  .card p{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: flex-end; */
+  }
+  .order{
+    background: linear-gradient(#7690d8, #297379);
+  }
+  .product{
+    background: linear-gradient(#5553a5, #e65f21, #ec21db);
+  }
+  .user{
+    background: linear-gradient(#e21887, #4175d6, #40e9e0);
+  }
+  .sale{
+    background: linear-gradient(#a7266d, #ce4813);
+  }
+  /* This template includes a basic header, navigation menu, and main content area with three cards as an example. You can customize the styles and content to suit your needs. */
+  
+@media (max-width: 1083px) {
+    
+    .dash{
+        width: 200px;
+        margin-left: 10px;
+    }
+
+    /* main{
+        grid-template-columns: repeat(auto-fit, minmax(0px, 300px));
+    }  */
+    
+}

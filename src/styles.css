@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+@import '@ionic/angular/css/display.css';
+html, body { height: 100%; }
+body { margin: 0; padding: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.custom-snack {
+    background-color: #0c6618;
+    color: #fff;
+  }
+  .custom-snack2 {
+    background-color: #e60b0b;
+    color: #fff;
+  }
+  .custom-snack3 {
+    background-color: #77c4ce;
+    color: #fff;
+  }
+  .custom-snack4 {
+    background-color: #cef32a;
+    color: #fff;
+  }
+  @import '~@angular/material/theming';
+
+  
+  

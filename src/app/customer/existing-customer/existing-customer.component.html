@@ -1,0 +1,54 @@
+<div class="row d-flex justify-content-center align-items-center" style="margin: 50px 0px;">
+  <div class="col-md-8">
+
+    <input class="form-control me-2" type="search" placeholder="Search...">
+  </div>
+
+</div>
+<div class="customer-data">
+    
+    <table class="table">
+        <thead>
+          <tr >
+            <!-- <th scope="col">Sr. No.</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">email</th>
+            <th scope="col">Phone No.</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Add Products</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr 
+              *ngFor="let customer of arr; let i=index"
+              style="cursor: pointer">
+              <!-- <th scope="row">{{ i }}</th> -->
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.email }}</td>
+              <td>{{ customer.phoneNo }}</td>
+              <td><button data-bs-toggle="modal" data-bs-target="#editModal" (click)="edit(customer)" class="btn btn-primary">EditCustomer</button></td>
+              <td><button class="btn btn-success" (click)="goToProductSection(customer)">AddProductToCart</button></td>
+            </tr>
+          
+        </tbody>
+      </table>
+      
+  </div>
+  <div  class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-9" id="exampleModalLabel" >Edit Customer</h1>
+          <button #showModal name="button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-new-customer [isEdit]="true" [customer]="customer" (closeModalEvent)="closeModal()"></app-new-customer>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" >Close</button>
+          <button type="button" class="btn btn-primary" >Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
